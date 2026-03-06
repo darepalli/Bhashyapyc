@@ -1,0 +1,25 @@
+name: bhashyapyc CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+      - name: Run tests
+        working-directory: bhashyapyc_rev
+        run: |
+          pytest
