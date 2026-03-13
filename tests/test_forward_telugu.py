@@ -20,3 +20,22 @@ def test_telugu_forward_and_execute():
     out, g = run_python_source(py)
     assert 'def' in py
     assert out.strip() == '55'
+
+
+def test_telugu_elif_forward_and_execute():
+    src = (
+        'విధి వర్గం(ఎన్):\n'
+        '    ఐతే ఎన్ < 0:\n'
+        '        తిరిగిపంపు "neg"\n'
+        '    లేకుంటే ఎన్ == 0:\n'
+        '        తిరిగిపంపు "zero"\n'
+        '    లేకపోతే:\n'
+        '        తిరిగిపంపు "pos"\n\n'
+        'print(వర్గం(-1))\n'
+        'print(వర్గం(0))\n'
+        'print(వర్గం(2))\n'
+    )
+    py = compile_to_python(src, lang='te')
+    out, _ = run_python_source(py)
+    assert 'elif ఎన్ == 0:' in py
+    assert out.strip().splitlines() == ['neg', 'zero', 'pos']

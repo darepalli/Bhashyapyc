@@ -10,3 +10,11 @@ def test_token_reverse_preserves_comments_and_translates_keywords_te():
     assert '# comment' in te  # comment preserved
     assert 'ఐతే' in te       # 'if' translated
     assert 'ముద్రించు' in te  # 'print' translated
+
+
+def test_token_reverse_translates_elif_keyword_te():
+    py = 'if False:\n    print("a")\nelif True:\n    print("b")\nelse:\n    print("c")\n'
+    te = reverse_translate_python(py, lang='te')
+    assert 'ఐతే అసత్యం:' in te
+    assert 'లేకుంటే సత్యం:' in te
+    assert 'లేకపోతే:' in te
