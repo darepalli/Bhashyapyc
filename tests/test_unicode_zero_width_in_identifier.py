@@ -8,7 +8,7 @@ from tests.conftest import run_python_source
 # Use ZERO WIDTH JOINER \u200D inside an identifier; Python identifiers disallow it → expect SyntaxError
 SRC = (
     'విధి పేరు\u200D(ఎన్):\n'
-    '    తిరిగి ఎన్\n\n'
+    '    తిరిగిపంపు ఎన్\n\n'
     'print(పేరు\u200D(2))\n'
 )
 

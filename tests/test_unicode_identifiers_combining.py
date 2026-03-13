@@ -8,7 +8,7 @@ from tests.conftest import run_python_source
 # Telugu identifier with combining marks (matras)
 SRC = (
     'విధి లేఖనం(సంఖ్యా):\n'
-    '    తిరిగి సంఖ్యా\n\n'
+    '    తిరిగిపంపు సంఖ్యా\n\n'
     'print(లేఖనం(7))\n'
 )
 

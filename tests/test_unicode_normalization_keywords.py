@@ -29,14 +29,14 @@ def test_sanskrit_if_nfd_xfail():
 
 
 def test_telugu_def_nfc_works():
-    src = f"{TEL_DEF_NFC} ఫ(ఎన్):\n    తిరిగి ఎన్\n\nprint(ఫ(3))\n"
+    src = f"{TEL_DEF_NFC} ఫ(ఎన్):\n    తిరిగిపంపు ఎన్\n\nprint(ఫ(3))\n"
     py = compile_to_python(src, lang='te')
     out, _ = run_python_source(py)
     assert out.strip() == '3'
 
 @pytest.mark.xfail(reason='NFD decomposition not yet normalized by parser')
 def test_telugu_def_nfd_xfail():
-    src = f"{TEL_DEF_NFD} ఫ(ఎన్):\n    తిరిగి ఎన్\n\nprint(ఫ(3))\n"
+    src = f"{TEL_DEF_NFD} ఫ(ఎన్):\n    తిరిగిపంపు ఎన్\n\nprint(ఫ(3))\n"
     py = compile_to_python(src, lang='te')
     out, _ = run_python_source(py)
     assert out.strip() == '3'
