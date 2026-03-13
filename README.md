@@ -16,7 +16,8 @@ between Python and Indian languages as hover balloon popups.
 
 ### Prerequisites
 
-- Python 3.11+ with the `bhashyapyc` package available (3.11+ required by CI; 3.9+ may work)
+- Python 3.12+ with the `bhashyapyc` package available
+  > **Note:** Python 3.11 and earlier are not supported. The package relies on Python 3.12's improved Unicode identifier handling (PEP 672 / tokenize changes) which correctly recognises Telugu and Sanskrit combining-character identifiers. CI runs against Python 3.12 and 3.13.
 - Install the package: `pip install -e .` from this repository root
 
 ### Installation
