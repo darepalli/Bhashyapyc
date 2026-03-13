@@ -54,7 +54,7 @@ def _translate_names(src: str, mapping: Dict[str, str]) -> str:
 
 
 def _detect_lang(src: str) -> str:
-    te_markers = ["విధి", "యెడల", "లేకపోతే", "తిరిగి", "ముద్రించు"]
+    te_markers = ["విధి", "ఐతే", "లేకపోతే", "తిరిగిపంపు", "ముద్రించు"]
     sa_markers = ["विधि", "यदि", "अन्यथा", "प्रत्यावर्तय", "मुद्रय"]
     if any(m in src for m in te_markers):
         return "te"
