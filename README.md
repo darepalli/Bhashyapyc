@@ -16,7 +16,7 @@ between Python and Indian languages as hover balloon popups.
 
 ### Prerequisites
 
-- Python 3.11+ with the `bhashyapyc` package available
+- Python 3.11+ with the `bhashyapyc` package available (3.11+ required by CI; 3.9+ may work)
 - Install the package: `pip install -e .` from this repository root
 
 ### Installation

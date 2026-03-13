@@ -50,20 +50,20 @@ export class Translator {
 
         const pyScript = direction === 'forward'
             ? `
-import sys, json
+import sys
 from bhashyapyc.compiler import compile_to_python
 src = sys.stdin.read()
-print(compile_to_python(src, lang=${JSON.stringify(lang)}), end='')
+print(compile_to_python(src, lang=sys.argv[1]), end='')
 `
             : `
 import sys
 from bhashyapyc.reverse import reverse_translate_python
 src = sys.stdin.read()
-print(reverse_translate_python(src, lang=${JSON.stringify(lang)}), end='')
+print(reverse_translate_python(src, lang=sys.argv[1]), end='')
 `;
 
         try {
-            const translated = await this.runPython(pythonPath, pyScript, source);
+            const translated = await this.runPython(pythonPath, pyScript, source, [lang]);
             const result: TranslationResult = {
                 translatedSource: translated,
                 lines: translated.split('\n'),
@@ -89,11 +89,11 @@ print(reverse_translate_python(src, lang=${JSON.stringify(lang)}), end='')
         }
     }
 
-    private runPython(pythonPath: string, script: string, stdin: string): Promise<string> {
+    private runPython(pythonPath: string, script: string, stdin: string, args: string[] = []): Promise<string> {
         return new Promise((resolve, reject) => {
             const proc = execFile(
                 pythonPath,
-                ['-c', script],
+                ['-c', script, ...args],
                 { maxBuffer: 10 * 1024 * 1024 },
                 (error, stdout, stderr) => {
                     if (error) {
